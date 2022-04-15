@@ -8,10 +8,8 @@
 int yylex(void); // -Wall : avoid implicit call
 int yyerror(const char*); // on fonctions defined by the generator
 %}
-
 %token NUMBER // kinds of non-trivial tokens expected from the lexer
 %start expression // main non-terminal
-
 %% // denotes the begining of the grammar with bison-specific syntax
 expression: // an expression is
 expression '+' term // either a sum of an expression and a term
@@ -28,7 +26,6 @@ factor: // a factor is
 | NUMBER // or a token NUMBER
 ;
 %% // denotes the end of the grammar
-
 // everything after %% is copied at the end of the generated .c
 int yyerror(const char *msg){ // called by the parser if the parsing fails
 printf("Parsing:: syntax error\n");
